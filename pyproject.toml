@@ -1,0 +1,11 @@
+[project]
+name = "ID-document-forgery-detection-CV-"
+version = "0.1.0"
+description = "Classic image-forensics ID-document forgery detection in pure Python"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Rishabh Pande"}]
+license = {text = "MIT"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
