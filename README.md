@@ -41,7 +41,11 @@ print(clf.predict_proba(scaler.transform(X[:5])))
 4. **Gradient inconsistency** (`edge_gradient_inconsistency`): local coefficient of variation of the Sobel gradient magnitude. Re-rendered, softer text has a different edge texture than the card's crisp print.
 5. **Classify** (`doc_forgery/model.py`): mean, standard deviation, and 99th percentile of each map give 12 features; a from-scratch logistic regression trained with SGD scores the card.
 
-Reference run (`python examples/quickstart.py`, 120 cards, 84 train / 36 test): image-level precision 0.889, recall 0.889, F1 0.889, ROC-AUC 0.972. Coarse region-level (16px cells scored by the forensic heatmap): ROC-AUC 0.634.
+Reference run (`python examples/quickstart.py`, 120 cards, 84 train / 36 test): image-level precision 0.941, recall 0.889, F1 0.914, ROC-AUC 0.969 (n=36 test cards: 16 TP, 1 FP, 17 TN, 2 FN, so these are noisy). Coarse region-level (16px cells scored by the forensic heatmap): ROC-AUC 0.634.
+
+![Three rows (pristine, copy-move, spliced) of synthetic ID cards, each with its ground-truth forged-region mask and the forensic heatmap](docs/gallery.png)
+
+Synthetic cards from `CardGenerator(seed=7)`, with the ground-truth mask and the forensic heatmap for one card of each kind. The heatmap is noisy and weak at region level (ROC-AUC 0.634 above), which is why the detector scores whole cards. Regenerate with `python examples/quickstart.py` then `python examples/plot_gallery.py` (needs matplotlib and Pillow).
 
 ## Roadmap
 
